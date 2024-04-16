@@ -1,0 +1,89 @@
+html, body {
+  height: 100%;
+}
+
+
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+
+#app {
+  height: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+.container {
+  width: 1100px;
+  margin: 0 auto;
+}
+
+
+.el-input__wrapper.is-focus {
+  box-shadow: 0px 0px 0px 1px rgb(156,206,173) inset !important;
+}
+
+.ElMsgA {
+  background-color: rgb(20, 20, 20) !important;
+}
+
+.ElMsgA .el-message-box__title {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.ElMsgA .el-message-box__message {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.el-dropdown {
+  --el-dropdown-menuItem-hover-color: rgba(156,206,173, 0.04) 
+}
+
+.el-input__wrapper {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.el-dropdown-menu__item:not(.is-disabled):focus {
+  background-color: rgba(156,206,173, 0.04) !important;
+  color: rgba(156,206,173, 1) !important;
+}
+span.el-dropdown-link {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.el-dropdown-link:focus {
+  outline: none;
+}
+
+.el-backtop:hover {
+  background-color: rgba(156,206,173, 0.04) !important;
+}
+
+.el-icon {
+  color: rgba(156,206,173, 1);
+}
+
+.el-input-number__decrease:hover, .el-input-number__increase:hover {
+  color: rgb(156,206,173) !important;
+}
+
+.el-input-number__decrease:hover~.el-input:not(.is-disabled) .el-input__wrapper, .el-input-number__increase:hover~.el-input:not(.is-disabled) .el-input__wrapper {
+  box-shadow: 0 0 0 1px rgb(156,206,173) inset !important;
+}
+
+.first-item .el-form-item__content{
+  flex-direction: column !important;
+  align-items: start;
+}
+textarea {
+  resize: none !important;
+}
