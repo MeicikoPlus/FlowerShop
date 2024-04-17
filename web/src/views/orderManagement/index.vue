@@ -85,11 +85,13 @@
 <template>
   <div class="orderManagement">
     <el-divider content-position="left">订单管理</el-divider>
-    <el-button link type="primary" @click="getAllOrder">所有订单</el-button>
-    <el-button link type="primary" @click="getPaidOrder">已支付</el-button>
-    <el-button link type="primary" @click="getCompletedOrder">已完成</el-button>
-    <el-button link type="primary" @click="getUnpaidOrder">未支付</el-button>
     <div class="content">
+      <div class="btns">
+        <el-button link type="primary" @click="getAllOrder">所有订单</el-button>
+        <el-button link type="primary" @click="getPaidOrder">已支付</el-button>
+        <el-button link type="primary" @click="getCompletedOrder">已完成</el-button>
+        <el-button link type="primary" @click="getUnpaidOrder">未支付</el-button>
+      </div>
       <template v-if="orders.length > 0">
         <template
           v-for="(orderInfo, index) in orders" :key="index"
@@ -121,11 +123,6 @@
 </template>
 
 <style scoped lang='scss'>
-  .el-button {
-    position: absolute;
-    right: 21px;
-    bottom: 18px;
-  }
   .orderManagement {
     width: 100%;
     height: 100%;
@@ -137,6 +134,11 @@
       margin: 0 auto;
       .el-card {
         margin-top: 20px;
+        .el-button {
+          position: absolute;
+          right: 21px;
+          bottom: 18px;
+        }
       }
     }
   }
