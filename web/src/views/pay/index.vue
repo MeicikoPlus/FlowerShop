@@ -36,7 +36,7 @@
     return price
   })
   const modifyState = (id) => {
-    updateOrderStateApi(id, "已完成").then(res => {
+    updateOrderStateApi(id, "已支付").then(res => {
       if (res.code === 1000) {
         ElMessage.success("修改完成")
         getOrderById()

@@ -1,10 +1,12 @@
 <script setup>
   import { ref, reactive, onUnmounted } from 'vue';
-  import { getAllOrderApi, updateOrderStateApi } from '@/api/order.js'
+  import { getAllOrderApi, updateOrderStateApi, getPaidOrderApi, getCompletedOrderApi, getUnpaidOrderApi } from '@/api/order.js'
   import { ElMessage } from 'element-plus';
 
   const orders = reactive([])
+  const option = ref(true)
   const getAllOrder = () => {
+    option.value = true
     getAllOrderApi().then(res => {
       if (res.code === 1000) {
         orders.splice(0, orders.length)
@@ -40,17 +42,53 @@
   }
 
   const timer = setInterval(() => {
-    getAllOrder()
-  }, 10000)
+    if (option.value) {
+      getAllOrder()
+    }
+  }, 60000)
 
   onUnmounted(() => {
     clearInterval(timer)
   })
+
+  const getPaidOrder = () => {
+    option.value = false
+    getPaidOrderApi().then(res => {
+      if (res.code === 1000) {
+        orders.splice(0, orders.length)
+        orders.push(...res.data.orders)
+      }
+    })
+  }
+
+  const getCompletedOrder = () => {
+    option.value = false
+    getCompletedOrderApi().then(res => {
+      if (res.code === 1000) {
+        orders.splice(0, orders.length)
+        orders.push(...res.data.orders)
+      }
+    })
+  }
+
+  const getUnpaidOrder = () => {
+    option.value = false
+    getUnpaidOrderApi().then(res => {
+      if (res.code === 1000) {
+        orders.splice(0, orders.length)
+        orders.push(...res.data.orders)
+      }
+    })
+  }
 </script>
 
 <template>
   <div class="orderManagement">
     <el-divider content-position="left">订单管理</el-divider>
+    <el-button link type="primary" @click="getAllOrder">所有订单</el-button>
+    <el-button link type="primary" @click="getPaidOrder">已支付</el-button>
+    <el-button link type="primary" @click="getCompletedOrder">已完成</el-button>
+    <el-button link type="primary" @click="getUnpaidOrder">未支付</el-button>
     <div class="content">
       <template v-if="orders.length > 0">
         <template

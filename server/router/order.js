@@ -95,4 +95,40 @@ async function getAllOrder(req, res) {
 }
 router.get("/getAllOrder", jwtVerify, getAllOrder)
 
+// 获取所有已支付订单
+async function getPaidOrder(req, res) {
+  try {
+    const orders = await databaseObj.findPaidOrders()
+    res.send({ code: 1000, data: { message: "查询成功", orders } });
+  } catch (error) {
+    console.log("获取所有已支付订单接口报错:", error);
+    res.send({ code: 1003, data: { message: "服务繁忙" } });
+  }
+}
+router.get("/getPaidOrder", jwtVerify, getPaidOrder)
+
+// 获取所有已完成订单
+async function getCompletedOrder(req, res) {
+  try {
+    const orders = await databaseObj.findCompletedOrders()
+    res.send({ code: 1000, data: { message: "查询成功", orders } });
+  } catch (error) {
+    console.log("获取所有已完成订单接口报错:", error);
+    res.send({ code: 1003, data: { message: "服务繁忙" } });
+  }
+}
+router.get("/getCompletedOrder", jwtVerify, getCompletedOrder)
+
+// 获取所有未支付订单
+async function getUnpaidOrder(req, res) {
+  try {
+    const orders = await databaseObj.findUnpaidOrders()
+    res.send({ code: 1000, data: { message: "查询成功", orders } });
+  } catch (error) {
+    console.log("获取所有订单接口报错:", error);
+    res.send({ code: 1003, data: { message: "服务繁忙" } });
+  }
+}
+router.get("/getUnpaidOrder", jwtVerify, getUnpaidOrder)
+
 module.exports = router

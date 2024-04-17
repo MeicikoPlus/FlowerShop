@@ -58,3 +58,27 @@ export function getAllOrderApi() {
     method: "GET"
   })
 }
+
+// 获取所有已支付订单
+export function getPaidOrderApi() {
+  return request({
+    url: "/order/getPaidOrder",
+    method: "GET"
+  })
+}
+
+// 获取所有已完成订单
+export function getCompletedOrderApi() {
+  return request({
+    url: "/order/getCompletedOrder",
+    method: "GET"
+  })
+}
+
+// 获取所有未支付订单
+export function getUnpaidOrderApi() {
+  return request({
+    url: "/order/getUnpaidOrder",
+    method: "GET"
+  })
+}

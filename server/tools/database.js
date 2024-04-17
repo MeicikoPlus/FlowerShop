@@ -535,6 +535,48 @@ class DataBase {
     })
   }
 
+  // 查询所有状态为“已支付”的订单
+  findPaidOrders() {
+    return new Promise((resolve, reject) => {
+      const query = `SELECT * FROM orders WHERE state = '已支付'`
+      this.connection.query(query, (error, results) => {
+        if (error) {
+          reject(error)
+        } else {
+          resolve(results)
+        }
+      })
+    })
+  }
+
+  // 查询所有状态为“已完成”的订单
+  findCompletedOrders() {
+    return new Promise((resolve, reject) => {
+      const query = `SELECT * FROM orders WHERE state = '已完成'`
+      this.connection.query(query, (error, results) => {
+        if (error) {
+          reject(error)
+        } else {
+          resolve(results)
+        }
+      })
+    })
+  }
+
+  // 查询所有状态为“未支付”的订单
+  findUnpaidOrders() {
+    return new Promise((resolve, reject) => {
+      const query = `SELECT * FROM orders WHERE state = '未支付'`
+      this.connection.query(query, (error, results) => {
+        if (error) {
+          reject(error)
+        } else {
+          resolve(results)
+        }
+      })
+    })
+  }
+
   // 查询某个用户下的所有订单
   findOrdersByUid(uid) {
     return new Promise((resolve, reject) => {
