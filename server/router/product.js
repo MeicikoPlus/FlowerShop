@@ -130,7 +130,6 @@ async function paginateAllProducts(req, res) {
   const { page, pageSize } = req.body
   try {
     const products = await databaseObj.paginateAllProducts(page, pageSize)
-    console.log('products: ', products);
     res.send({ code: 1000, data: { message: "查询成功", products } })
   } catch (error) {
     console.log("分页查询接口报错:", error)

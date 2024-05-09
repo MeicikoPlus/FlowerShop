@@ -135,7 +135,7 @@
 
 <template>
   <div class="product">
-    <el-divider content-position="left">订单管理</el-divider>
+    <el-divider content-position="left">商品管理</el-divider>
     <div class="content">
       <el-button link type="primary" @click="refresh">刷新</el-button>
       <el-button link type="primary" @click="dialogVisible = true">添加</el-button>
@@ -162,6 +162,9 @@
           </el-form-item>
           <el-form-item label="商品名称">
             <el-input v-model="formData.product_name" style="width: 240px" placeholder="Please input" />
+          </el-form-item>
+          <el-form-item label="商品介绍">
+            <el-input v-model="formData.product_description" style="width: 240px" placeholder="Please input" />
           </el-form-item>
           <el-form-item label="商品价格">
             <el-input-number v-model="formData.product_price" />
